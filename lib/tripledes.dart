@@ -36,6 +36,6 @@ class BlockCipher {
     var b = engine..init(false, utf8ToWords(key));
     var result = b.process(parseBase64(ciphertext));
     engine.reset();
-    return wordsToUtf8(result);
+    return utf8.decode(wordsToUtf8(result).codeUnits);
   }
 }
