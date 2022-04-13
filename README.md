@@ -28,4 +28,15 @@ main() {
   print("ciphertext (base64): $ciphertext");
   print("decoded ciphertext: $decoded");
 }
+
+String decodeCipher(String str) {
+    var blockCipher = BlockCipher(TripleDESEngine(), desKey);
+    return utf8.decode(blockCipher.decodeB64(str).codeUnits);
+  }
+
+String encodeCipher(String str) {
+  var blockCipher = BlockCipher(TripleDESEngine(), desKey);
+  var string = String.fromCharCodes(utf8.encode(str));
+  return blockCipher.encodeB64(string);
+}
   ```
